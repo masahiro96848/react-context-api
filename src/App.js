@@ -25,7 +25,7 @@ function App() {
                     <button>Edit</button>
                 </li>
                 <li>
-                    <label htmlFor="">
+                    <label htmlFor="" className="active">
                         <input type="checkbox" id="" />
                         Cooking Todo
                     </label>
