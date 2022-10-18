@@ -23,21 +23,27 @@ export default function Footer() {
     }
 
     return (
-        <div className="row">
-            <label htmlFor="all">
-                <input
-                    type="checkbox"
-                    name="all"
-                    id=""
-                    onChange={handleCheckAll}
-                    checked={checkAll}
-                />
-                ALL
-            </label>
-            <p>You have {todos.length} todo</p>
-            <button id="delete" onClick={deleteTodo}>
-                Delete
-            </button>
-        </div>
+        <>
+            {todos.length === 0 ? (
+                <h2>Congratulations! Nothing Todo</h2>
+            ) : (
+                <div className="row">
+                    <label htmlFor="all">
+                        <input
+                            type="checkbox"
+                            name="all"
+                            id=""
+                            onChange={handleCheckAll}
+                            checked={checkAll}
+                        />
+                        ALL
+                    </label>
+                    <p>You have {todos.length} todo</p>
+                    <button id="delete" onClick={deleteTodo}>
+                        Delete
+                    </button>
+                </div>
+            )}
+        </>
     )
 }
