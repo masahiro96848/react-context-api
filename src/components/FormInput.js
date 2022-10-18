@@ -1,15 +1,21 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useRef, useEffect } from 'react'
 import { DataContext } from './DataProvider'
 
 export default function FormInput() {
     const [todos, setTodos] = useContext(DataContext)
     const [todoName, setTodoName] = useState('')
+    const todoInput = useRef()
 
     const addTodo = (e) => {
         e.preventDefault()
         setTodos([...todos, { name: todoName, complete: false }])
         setTodoName('')
+        todoInput.current.focus()
     }
+
+    useEffect(() => {
+        todoInput.current.focus()
+    }, [])
 
     return (
         <form autoComplete="off" onSubmit={addTodo}>
@@ -17,6 +23,7 @@ export default function FormInput() {
                 type="text"
                 name="todos"
                 id="todos"
+                ref={todoInput}
                 required
                 placeholder="what needs to be done?"
                 value={todoName}
