@@ -1,10 +1,15 @@
 import React from 'react'
 
-export default function ListItem({ todo, id }) {
+export default function ListItem({ todo, id, checkComplete }) {
     return (
         <li>
-            <label htmlFor={id}>
-                <input type="checkbox" id={id} />
+            <label htmlFor={id} className={todo.complete ? 'active' : ''}>
+                <input
+                    type="checkbox"
+                    id={id}
+                    checked={todo.complete}
+                    onChange={() => checkComplete(id)}
+                />
                 {todo.name}
             </label>
             <button>Edit</button>
